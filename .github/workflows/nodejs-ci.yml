@@ -1,0 +1,29 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Use Node 18
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      # Go to backend folder (where package.json is)
+      - run: cd backend
+
+      # Install dependencies
+      - run: npm install
+
+      # Optional: Build & Test (comment out if scripts do not exist)
+      # - run: npm run build --if-present
+      # - run: npm test
