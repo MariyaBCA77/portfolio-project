@@ -11,21 +11,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Use Node 18 (stable)
+      # Use Node 18
       - name: Use Node.js 18
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 18
           cache: 'npm'
 
-      # Move to backend folder
-      - name: Go to backend folder
-        run: cd backend
+      # Go to backend folder (where package.json is)
+      - run: cd backend
 
-      # Install dependencies only
-      - name: Install dependencies
-        run: npm install
+      # Install dependencies
+      - run: npm install
 
-      # Optional: Build & Test (commented out to prevent failure)
+      # Optional: Build & Test (comment out if scripts do not exist)
       # - run: npm run build --if-present
       # - run: npm test
